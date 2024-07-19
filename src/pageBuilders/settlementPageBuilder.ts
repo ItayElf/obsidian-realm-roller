@@ -3,7 +3,7 @@ import { titled, titledEach, writeEntityFile } from "src/utils";
 import buildNpcPage, { Npc } from "./npcPageBuilder";
 import buildLocationPage, { Location } from "./locationPageBuilder";
 
-interface Settlement {
+export interface Settlement {
 	name: string;
 	settlementType: any;
 	dominantRace: any | null;
@@ -15,7 +15,7 @@ interface Settlement {
 	trouble: string;
 }
 
-const getSubtitle = (settlement: Settlement) =>
+export const getSettlementSubtitle = (settlement: Settlement) =>
 	titled(
 		`${settlement.settlementType.getSettlementType$0()} of ${settlement.dominantOccupation?.slice(
 			0,
@@ -25,7 +25,7 @@ const getSubtitle = (settlement: Settlement) =>
 
 const getContent = (settlement: Settlement) => {
 	return [
-		`> ${getSubtitle(settlement)}\n`,
+		`> ${getSettlementSubtitle(settlement)}\n`,
 		settlement.description.replace("\n", "\n\n"),
 		"",
 		`**Population:** ${settlement.population.toLocaleString()}`,

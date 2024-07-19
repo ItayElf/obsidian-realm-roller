@@ -2,7 +2,6 @@ import { App } from "obsidian";
 import randpg from "../randpg/randpg";
 import OptionalModal from "src/modals/optionalModal";
 import { openFileByPath, titled } from "src/utils";
-import buildCompanionPage from "src/pageBuilders/companionPageBuilder";
 import buildDeityPage from "src/pageBuilders/deityPageBuilder";
 
 export const getDeityTypes = () => {
