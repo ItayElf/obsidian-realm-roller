@@ -1,7 +1,8 @@
 import { App } from "obsidian";
 import randpg from "../randpg/randpg";
 import OptionalModal from "src/modals/optionalModal";
-import { toTitleCase } from "src/utils";
+import { openFileByPath, toTitleCase } from "src/utils";
+import buildCompanionPage from "src/pageBuilders/companionPageBuilder";
 
 const getCompanionTypes = () => {
 	return new randpg.CompanionManager()
@@ -9,9 +10,10 @@ const getCompanionTypes = () => {
 		.map((x) => toTitleCase(x.getCompanionType$0()));
 };
 
-const onGenerate = (result: string | null) => {
+const onGenerate = async (app: App, result: string | null) => {
 	const companion = randpg.generateCompanion(result?.toLowerCase());
-	console.log(companion);
+	const newNotePath = await buildCompanionPage(app, companion);
+	await openFileByPath(app, newNotePath);
 };
 
 const getCompanionCommand = (app: App) => {
@@ -19,7 +21,9 @@ const getCompanionCommand = (app: App) => {
 		id: "realm-roller-generate-companion",
 		name: "Generate Companion",
 		callback: () => {
-			new OptionalModal(app, getCompanionTypes(), onGenerate).open();
+			new OptionalModal(app, getCompanionTypes(), (r) =>
+				onGenerate(app, r)
+			).open();
 		},
 	};
 };

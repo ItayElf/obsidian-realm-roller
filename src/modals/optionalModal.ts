@@ -7,7 +7,7 @@ class OptionalModal extends SuggestModal<string | null> {
 	constructor(
 		app: App,
 		options: string[],
-		onSelect: (result: string) => void
+		onSelect: (result: string) => Promise<void>
 	) {
 		super(app);
 		this.options = options;
@@ -28,7 +28,10 @@ class OptionalModal extends SuggestModal<string | null> {
 		el.createEl("div", { text: option ?? "Random" });
 	}
 
-	onChooseSuggestion(item: string | null, evt: MouseEvent | KeyboardEvent) {
+	async onChooseSuggestion(
+		item: string | null,
+		evt: MouseEvent | KeyboardEvent
+	) {
 		this.onSelect(item);
 	}
 }
