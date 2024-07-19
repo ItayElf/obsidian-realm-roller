@@ -1,11 +1,9 @@
 import { Notice, Plugin } from "obsidian";
-import randpg from "./randpg/randpg";
+
+import getCompanionCommand from "./commands/generateCompanion";
 
 export default class RealmRoller extends Plugin {
 	async onload() {
-		console.log(randpg.generateWorld());
-		this.addRibbonIcon("dice", "Greet", () => {
-			new Notice("Hello, world!");
-		});
+		this.addCommand(getCompanionCommand(this.app));
 	}
 }
