@@ -8,9 +8,25 @@ import getLocationCommand from "./commands/generateLocation";
 import getSettlementCommand from "./commands/generateSettlement";
 import getSettlementNamesCommand from "./commands/generateSettlementNames";
 import getLandscapeCommand from "./commands/generateLandscape";
+import { RealmRollerSettingTab } from "./settingsTab";
+
+interface RealmRollerSettings {
+	rootFolder: string;
+}
+
+const DEFAULT_SETTINGS: Partial<RealmRollerSettings> = {
+	rootFolder: "Entities",
+};
 
 export default class RealmRoller extends Plugin {
+	settings: RealmRollerSettings;
+
 	async onload() {
+		await this.loadSettings();
+		this.addSettingTab(new RealmRollerSettingTab(this.app, this));
+
+		this.app.getSettings = () => this.settings;
+
 		this.addCommand(getCompanionCommand(this.app));
 		this.addCommand(getCompanionNamesCommand(this.app));
 		this.addCommand(getNpcCommand(this.app));
@@ -19,5 +35,17 @@ export default class RealmRoller extends Plugin {
 		this.addCommand(getSettlementCommand(this.app));
 		this.addCommand(getSettlementNamesCommand(this.app));
 		this.addCommand(getLandscapeCommand(this.app));
+	}
+
+	async loadSettings() {
+		this.settings = Object.assign(
+			{},
+			DEFAULT_SETTINGS,
+			await this.loadData()
+		);
+	}
+
+	async saveSettings() {
+		await this.saveData(this.settings);
 	}
 }

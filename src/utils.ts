@@ -23,7 +23,7 @@ export async function openFileByPath(app: App, path: string) {
 }
 
 export async function writeEntityFile(app: App, path: string, content: string) {
-	const rootFolder = "Entities";
+	const { rootFolder } = app.getSettings();
 	path = rootFolder + "/" + path;
 
 	const folderPath = path.substring(0, path.lastIndexOf("/"));
