@@ -7,6 +7,7 @@ import getNamesCommand from "./commands/generateNames";
 import getLocationCommand from "./commands/generateLocation";
 import getSettlementCommand from "./commands/generateSettlement";
 import getSettlementNamesCommand from "./commands/generateSettlementNames";
+import getLandscapeCommand from "./commands/generateLandscape";
 
 export default class RealmRoller extends Plugin {
 	async onload() {
@@ -17,5 +18,6 @@ export default class RealmRoller extends Plugin {
 		this.addCommand(getLocationCommand(this.app));
 		this.addCommand(getSettlementCommand(this.app));
 		this.addCommand(getSettlementNamesCommand(this.app));
+		this.addCommand(getLandscapeCommand(this.app));
 	}
 }
