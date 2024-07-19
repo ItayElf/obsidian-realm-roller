@@ -13,6 +13,7 @@ import getDeityCommand from "./commands/generateDeity";
 import getEmblemCommand from "./commands/generateEmblem";
 import getGuildCommand from "./commands/generateGuild";
 import getKingdomCommand from "./commands/generateKingdom";
+import getWorldCommand from "./commands/generateWorld";
 
 interface RealmRollerSettings {
 	rootFolder: string;
@@ -43,6 +44,7 @@ export default class RealmRoller extends Plugin {
 		this.addCommand(getEmblemCommand(this.app));
 		this.addCommand(getGuildCommand(this.app));
 		this.addCommand(getKingdomCommand(this.app));
+		this.addCommand(getWorldCommand(this.app));
 	}
 
 	async loadSettings() {
