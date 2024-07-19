@@ -1,5 +1,5 @@
 import { App } from "obsidian";
-import { article, titled, titledEach } from "src/utils";
+import { article, titled, titledEach, writeEntityFile } from "src/utils";
 import buildCompanionPage, { Companion } from "./companionPageBuilder";
 
 interface Hair {
@@ -121,8 +121,9 @@ const getContent = (npc: Npc) => {
 };
 
 export default async function buildNpcPage(app: App, npc: Npc) {
-	const newNote = await app.vault.create(
-		`Entities/Npcs/${titled(npc.name)}.md`,
+	const newNote = await writeEntityFile(
+		app,
+		`Npcs/${titled(npc.name)}.md`,
 		getContent(npc)
 	);
 	npc.companions.forEach(async (c: any) => await buildCompanionPage(app, c));

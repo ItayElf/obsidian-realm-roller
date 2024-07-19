@@ -1,5 +1,5 @@
 import { App } from "obsidian";
-import { titled, titledEach } from "src/utils";
+import { titled, titledEach, writeEntityFile } from "src/utils";
 import buildNpcPage, { Npc } from "./npcPageBuilder";
 import buildLocationPage, { Location } from "./locationPageBuilder";
 
@@ -28,7 +28,7 @@ const getContent = (settlement: Settlement) => {
 		`> ${getSubtitle(settlement)}\n`,
 		settlement.description.replace("\n", "\n\n"),
 		"",
-		`**Population:** ${settlement.population}`,
+		`**Population:** ${settlement.population.toLocaleString()}`,
 		`**Trouble:** ${settlement.trouble}`,
 		"### Locations",
 		"---",
@@ -51,8 +51,9 @@ export default async function buildSettlementPage(
 	app: App,
 	settlement: Settlement
 ) {
-	const newNote = await app.vault.create(
-		`Entities/Settlements/${titled(settlement.name)}.md`,
+	const newNote = await writeEntityFile(
+		app,
+		`Settlements/${titled(settlement.name)}.md`,
 		getContent(settlement)
 	);
 	settlement.locations.forEach(async (l) => await buildLocationPage(app, l));

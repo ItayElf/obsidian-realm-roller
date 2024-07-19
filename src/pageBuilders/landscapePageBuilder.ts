@@ -1,5 +1,5 @@
 import { App } from "obsidian";
-import { titled, titledEach } from "src/utils";
+import { titled, titledEach, writeEntityFile } from "src/utils";
 
 export interface Landscape {
 	name: string;
@@ -38,8 +38,9 @@ export default async function buildLandscapePage(
 	app: App,
 	landscape: Landscape
 ) {
-	const newNote = await app.vault.create(
-		`Entities/Landscapes/${titled(landscape.name)}.md`,
+	const newNote = await writeEntityFile(
+		app,
+		`Landscapes/${titled(landscape.name)}.md`,
 		getContent(landscape)
 	);
 	return newNote.path;

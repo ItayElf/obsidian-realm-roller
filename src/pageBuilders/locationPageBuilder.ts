@@ -1,5 +1,5 @@
 import { App } from "obsidian";
-import { titled, titledEach } from "src/utils";
+import { titled, titledEach, writeEntityFile } from "src/utils";
 import buildNpcPage, { Npc } from "./npcPageBuilder";
 
 export interface Goods {
@@ -50,8 +50,9 @@ const getContent = (location: Location) => {
 };
 
 export default async function buildLocationPage(app: App, location: Location) {
-	const newNote = await app.vault.create(
-		`Entities/Locations/${titled(location.name)}.md`,
+	const newNote = await writeEntityFile(
+		app,
+		`Locations/${titled(location.name)}.md`,
 		getContent(location)
 	);
 	await buildNpcPage(app, location.owner);

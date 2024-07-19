@@ -1,5 +1,5 @@
 import { App } from "obsidian";
-import { titled } from "src/utils";
+import { titled, writeEntityFile } from "src/utils";
 
 export interface Companion {
 	appearance: string;
@@ -31,8 +31,9 @@ export default async function buildCompanionPage(
 	app: App,
 	companion: Companion
 ) {
-	const newNote = await app.vault.create(
-		`Entities/Companions/${titled(companion.name)}.md`,
+	const newNote = await writeEntityFile(
+		app,
+		`Companions/${titled(companion.name)}.md`,
 		getContent(companion)
 	);
 	return newNote.path;

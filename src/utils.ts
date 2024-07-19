@@ -17,7 +17,19 @@ export const article = (string: string) =>
 	vowels.includes(string[0].toLowerCase()) ? `an ${string}` : `a ${string}`;
 
 export async function openFileByPath(app: App, path: string) {
-	const file = this.app.vault.getAbstractFileByPath(path);
-	const leaf = this.app.workspace.getLeaf(true);
+	const file = app.vault.getAbstractFileByPath(path);
+	const leaf = app.workspace.getLeaf(true);
 	await leaf.openFile(file);
+}
+
+export async function writeEntityFile(app: App, path: string, content: string) {
+	const rootFolder = "Entities";
+	path = rootFolder + "/" + path;
+
+	const folderPath = path.substring(0, path.lastIndexOf("/"));
+	const folderExists = app.vault.getAbstractFileByPath(folderPath);
+	if (!folderExists) {
+		await app.vault.createFolder(folderPath);
+	}
+	return await app.vault.create(path, content);
 }
