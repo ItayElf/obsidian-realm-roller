@@ -28,8 +28,16 @@ export async function writeEntityFile(app: App, path: string, content: string) {
 
 	const folderPath = path.substring(0, path.lastIndexOf("/"));
 	const folderExists = app.vault.getAbstractFileByPath(folderPath);
-	if (!folderExists) {
-		await app.vault.createFolder(folderPath);
+	try {
+		if (!folderExists) {
+			await app.vault.createFolder(folderPath);
+		}
+	} catch (e) {
+		console.log(`First: ${path}, ${e}`);
 	}
-	return await app.vault.create(path, content);
+	try {
+		return await app.vault.create(path, content);
+	} catch (e) {
+		console.log(`Second: ${path}, ${e}`);
+	}
 }
