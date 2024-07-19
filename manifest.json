@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.0",
+	"id": "realm-roller",
+	"name": "Realm Roller",
+	"version": "0.1.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Generates fantasy entities like NPCs, settlements and even worlds! This is an adaptation of the Realm Roller app as a plugin.",
+	"author": "ItayElf",
+	"authorUrl": "https://github.com/ItayElf/obsidian-realm-roller",
+	"fundingUrl": "#",
 	"isDesktopOnly": false
 }
