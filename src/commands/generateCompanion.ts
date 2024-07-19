@@ -4,14 +4,14 @@ import OptionalModal from "src/modals/optionalModal";
 import { openFileByPath, toTitleCase } from "src/utils";
 import buildCompanionPage from "src/pageBuilders/companionPageBuilder";
 
-const getCompanionTypes = () => {
+export const getCompanionTypes = () => {
 	return new randpg.CompanionManager()
 		.get$activeTypes()
 		.map((x) => toTitleCase(x.getCompanionType$0()));
 };
 
-const onGenerate = async (app: App, result: string | null) => {
-	const companion = randpg.generateCompanion(result?.toLowerCase());
+const onGenerate = async (app: App, type: string | null) => {
+	const companion = randpg.generateCompanion(type?.toLowerCase());
 	const newNotePath = await buildCompanionPage(app, companion);
 	await openFileByPath(app, newNotePath);
 };
