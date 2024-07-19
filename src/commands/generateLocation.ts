@@ -12,7 +12,6 @@ export const getLocationTypes = () => {
 
 const onGenerate = async (app: App, type: string | null) => {
 	const location = randpg.generateLocation(type?.toLowerCase());
-	console.log(location);
 	const newNotePath = await buildLocationPage(app, location);
 	await openFileByPath(app, newNotePath);
 };

@@ -1,6 +1,5 @@
 import { App } from "obsidian";
-import { article, titled, titledEach } from "src/utils";
-import { Companion } from "./companionPageBuilder";
+import { titled, titledEach } from "src/utils";
 import buildNpcPage, { Npc } from "./npcPageBuilder";
 
 export interface Goods {
