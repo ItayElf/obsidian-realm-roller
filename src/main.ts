@@ -6,6 +6,7 @@ import getNpcCommand from "./commands/generateNpc";
 import getNamesCommand from "./commands/generateNames";
 import getLocationCommand from "./commands/generateLocation";
 import getSettlementCommand from "./commands/generateSettlement";
+import getSettlementNamesCommand from "./commands/generateSettlementNames";
 
 export default class RealmRoller extends Plugin {
 	async onload() {
@@ -15,5 +16,6 @@ export default class RealmRoller extends Plugin {
 		this.addCommand(getNamesCommand(this.app));
 		this.addCommand(getLocationCommand(this.app));
 		this.addCommand(getSettlementCommand(this.app));
+		this.addCommand(getSettlementNamesCommand(this.app));
 	}
 }

@@ -21,7 +21,6 @@ const onGenerate = async (
 		type?.toLowerCase(),
 		race?.toLowerCase()
 	);
-	console.log(settlement);
 	const newNotePath = await buildSettlementPage(app, settlement);
 	await openFileByPath(app, newNotePath);
 };
