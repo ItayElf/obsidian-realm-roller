@@ -4,6 +4,7 @@ import getCompanionCommand from "./commands/generateCompanion";
 import getCompanionNamesCommand from "./commands/generateCompanionNames";
 import getNpcCommand from "./commands/generateNpc";
 import getNamesCommand from "./commands/generateNames";
+import getLocationCommand from "./commands/generateLocation";
 
 export default class RealmRoller extends Plugin {
 	async onload() {
@@ -11,5 +12,6 @@ export default class RealmRoller extends Plugin {
 		this.addCommand(getCompanionNamesCommand(this.app));
 		this.addCommand(getNpcCommand(this.app));
 		this.addCommand(getNamesCommand(this.app));
+		this.addCommand(getLocationCommand(this.app));
 	}
 }
