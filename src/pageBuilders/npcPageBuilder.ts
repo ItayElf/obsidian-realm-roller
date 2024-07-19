@@ -109,7 +109,12 @@ const getContent = (npc: Npc) => {
 			? [
 					"### Companions",
 					"---",
-					...npc.companions.map((c) => `- [[${titled(c.name)}]]`),
+					...npc.companions.map(
+						(c) =>
+							`- [[${titled(c.name)}]]: ${titled(
+								c.gender._name
+							)} ${titled(c.companionType.getCompanionType$0())}`
+					),
 			  ]
 			: []),
 	].join("\n");
