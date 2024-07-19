@@ -1,7 +1,7 @@
 import { App } from "obsidian";
-import { toTitleCase } from "src/utils";
+import { titled } from "src/utils";
 
-interface Companion {
+export interface Companion {
 	appearance: string;
 	companionType: any;
 	gender: any;
@@ -13,17 +13,17 @@ interface Companion {
 
 const getContent = (companion: Companion) => {
 	return [
-		`> ${toTitleCase(companion.gender._name)} ${toTitleCase(
+		`> ${titled(companion.gender._name)} ${titled(
 			companion.companionType.getCompanionType$0()
 		)}\n`,
 		`${companion.appearance}\n`,
 		`${companion.personality}\n`,
 		"### Quirks",
 		"---",
-		...companion.quirks.map((q) => `- ${toTitleCase(q)}`),
+		...companion.quirks.map((q) => `- ${titled(q)}`),
 		"### Skills",
 		"---",
-		...companion.skills.map((q) => `- ${toTitleCase(q)}`),
+		...companion.skills.map((q) => `- ${titled(q)}`),
 	].join("\n");
 };
 
@@ -32,7 +32,7 @@ export default async function buildCompanionPage(
 	companion: Companion
 ) {
 	const newNote = await app.vault.create(
-		`Entities/Companions/${toTitleCase(companion.name)}.md`,
+		`Entities/Companions/${titled(companion.name)}.md`,
 		getContent(companion)
 	);
 	return newNote.path;

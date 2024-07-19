@@ -1,5 +1,5 @@
 import { App, Modal, Setting } from "obsidian";
-import { toTitleCase } from "src/utils";
+import { titled } from "src/utils";
 
 export default class NamesModal extends Modal {
 	private app: App;
@@ -39,7 +39,7 @@ export default class NamesModal extends Modal {
 		const list = contentEl.createEl("ul");
 		this.names.forEach((n) => {
 			const item = list.createEl("li", {
-				text: toTitleCase(n),
+				text: titled(n),
 			});
 			item.style.fontSize = "1.5rem";
 		});

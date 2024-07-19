@@ -1,13 +1,13 @@
 import { App } from "obsidian";
 import randpg from "../randpg/randpg";
 import OptionalModal from "src/modals/optionalModal";
-import { openFileByPath, toTitleCase } from "src/utils";
+import { openFileByPath, titled } from "src/utils";
 import buildCompanionPage from "src/pageBuilders/companionPageBuilder";
 
 export const getCompanionTypes = () => {
 	return new randpg.CompanionManager()
 		.get$activeTypes()
-		.map((x) => toTitleCase(x.getCompanionType$0()));
+		.map((x) => titled(x.getCompanionType$0()));
 };
 
 const onGenerate = async (app: App, type: string | null) => {
