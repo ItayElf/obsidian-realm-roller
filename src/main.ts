@@ -9,6 +9,7 @@ import getSettlementCommand from "./commands/generateSettlement";
 import getSettlementNamesCommand from "./commands/generateSettlementNames";
 import getLandscapeCommand from "./commands/generateLandscape";
 import { RealmRollerSettingTab } from "./settingsTab";
+import getDeityCommand from "./commands/generateDeity";
 
 interface RealmRollerSettings {
 	rootFolder: string;
@@ -35,6 +36,7 @@ export default class RealmRoller extends Plugin {
 		this.addCommand(getSettlementCommand(this.app));
 		this.addCommand(getSettlementNamesCommand(this.app));
 		this.addCommand(getLandscapeCommand(this.app));
+		this.addCommand(getDeityCommand(this.app));
 	}
 
 	async loadSettings() {
