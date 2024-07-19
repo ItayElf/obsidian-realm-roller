@@ -1,7 +1,7 @@
 import { App } from "obsidian";
 import { article, titled, titledEach } from "src/utils";
 import { Companion } from "./companionPageBuilder";
-import { Npc } from "./npcPageBuilder";
+import buildNpcPage, { Npc } from "./npcPageBuilder";
 
 export interface Goods {
 	name: string;
@@ -55,5 +55,6 @@ export default async function buildLocationPage(app: App, location: Location) {
 		`Entities/Locations/${titled(location.name)}.md`,
 		getContent(location)
 	);
+	await buildNpcPage(app, location.owner);
 	return newNote.path;
 }

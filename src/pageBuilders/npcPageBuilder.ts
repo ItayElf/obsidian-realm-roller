@@ -1,6 +1,6 @@
 import { App } from "obsidian";
 import { article, titled, titledEach } from "src/utils";
-import { Companion } from "./companionPageBuilder";
+import buildCompanionPage, { Companion } from "./companionPageBuilder";
 
 interface Hair {
 	length: string;
@@ -120,5 +120,6 @@ export default async function buildNpcPage(app: App, npc: Npc) {
 		`Entities/Npcs/${titled(npc.name)}.md`,
 		getContent(npc)
 	);
+	npc.companions.forEach(async (c: any) => await buildCompanionPage(app, c));
 	return newNote.path;
 }
