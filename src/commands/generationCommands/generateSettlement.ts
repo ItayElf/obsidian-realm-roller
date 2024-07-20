@@ -1,8 +1,7 @@
 import { App } from "obsidian";
-import randpg from "../randpg/randpg";
+import randpg from "../../randpg/randpg";
 import OptionalModal from "src/modals/optionalModal";
 import { openFileByPath, titled } from "src/utils";
-import buildNpcPage from "src/pageBuilders/npcPageBuilder";
 import { getRaces } from "./generateNpc";
 import buildSettlementPage from "src/pageBuilders/settlementPageBuilder";
 

@@ -1,5 +1,5 @@
 import { App } from "obsidian";
-import randpg from "../randpg/randpg";
+import randpg from "../../randpg/randpg";
 import OptionalModal from "src/modals/optionalModal";
 import { getCompanionTypes } from "./generateCompanion";
 import NamesModal from "src/modals/namesModal";

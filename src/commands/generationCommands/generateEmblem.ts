@@ -1,6 +1,5 @@
 import { App } from "obsidian";
-import randpg from "../randpg/randpg";
-import { openFileByPath, titled, writeEntityFile } from "src/utils";
+import randpg from "../../randpg/randpg";
 import EmblemModal from "src/modals/emblemModal";
 
 const onGenerate = async (app: App) => {

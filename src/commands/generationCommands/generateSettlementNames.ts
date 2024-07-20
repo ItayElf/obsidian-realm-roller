@@ -1,5 +1,5 @@
 import { App } from "obsidian";
-import randpg from "../randpg/randpg";
+import randpg from "../../randpg/randpg";
 import OptionalModal from "src/modals/optionalModal";
 import NamesModal from "src/modals/namesModal";
 import { getRaces } from "./generateNpc";

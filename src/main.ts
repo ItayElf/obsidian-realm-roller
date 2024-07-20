@@ -1,19 +1,19 @@
 import { Plugin } from "obsidian";
 
-import getCompanionCommand from "./commands/generateCompanion";
-import getCompanionNamesCommand from "./commands/generateCompanionNames";
-import getNpcCommand from "./commands/generateNpc";
-import getNamesCommand from "./commands/generateNames";
-import getLocationCommand from "./commands/generateLocation";
-import getSettlementCommand from "./commands/generateSettlement";
-import getSettlementNamesCommand from "./commands/generateSettlementNames";
-import getLandscapeCommand from "./commands/generateLandscape";
+import getCompanionCommand from "./commands/generationCommands/generateCompanion";
+import getCompanionNamesCommand from "./commands/generationCommands/generateCompanionNames";
+import getNpcCommand from "./commands/generationCommands/generateNpc";
+import getNamesCommand from "./commands/generationCommands/generateNames";
+import getLocationCommand from "./commands/generationCommands/generateLocation";
+import getSettlementCommand from "./commands/generationCommands/generateSettlement";
+import getSettlementNamesCommand from "./commands/generationCommands/generateSettlementNames";
+import getLandscapeCommand from "./commands/generationCommands/generateLandscape";
 import { RealmRollerSettingTab } from "./settingsTab";
-import getDeityCommand from "./commands/generateDeity";
-import getEmblemCommand from "./commands/generateEmblem";
-import getGuildCommand from "./commands/generateGuild";
-import getKingdomCommand from "./commands/generateKingdom";
-import getWorldCommand from "./commands/generateWorld";
+import getDeityCommand from "./commands/generationCommands/generateDeity";
+import getEmblemCommand from "./commands/generationCommands/generateEmblem";
+import getGuildCommand from "./commands/generationCommands/generateGuild";
+import getKingdomCommand from "./commands/generationCommands/generateKingdom";
+import getWorldCommand from "./commands/generationCommands/generateWorld";
 
 interface RealmRollerSettings {
 	rootFolder: string;

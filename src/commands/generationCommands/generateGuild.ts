@@ -1,7 +1,7 @@
 import { App } from "obsidian";
-import randpg from "../randpg/randpg";
+import randpg from "../../randpg/randpg";
 import OptionalModal from "src/modals/optionalModal";
-import { openFileByPath, titled, titledEach, writeEntityFile } from "src/utils";
+import { openFileByPath, titled } from "src/utils";
 import buildGuildPage from "src/pageBuilders/guildPageBuilder";
 
 export const getGuildTypes = () => {

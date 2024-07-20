@@ -1,7 +1,7 @@
 {
 	"id": "realm-roller",
 	"name": "Realm Roller",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"minAppVersion": "0.15.0",
 	"description": "Generates fantasy entities like NPCs, settlements and even worlds! This is an adaptation of the Realm Roller app as a plugin.",
 	"author": "ItayElf",

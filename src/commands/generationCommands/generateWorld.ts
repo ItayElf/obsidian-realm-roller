@@ -1,5 +1,5 @@
 import { App } from "obsidian";
-import randpg from "../randpg/randpg";
+import randpg from "../../randpg/randpg";
 import { openFileByPath } from "src/utils";
 import buildWorldPage from "src/pageBuilders/worldPageBuilder";
 
