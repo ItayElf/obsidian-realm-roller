@@ -34,16 +34,14 @@ export class RealmRollerSettingTab extends PluginSettingTab {
 			text: "Races",
 			cls: "setting-item-heading setting-item",
 		});
-		new randpg.RaceManager().get$activeTypes().forEach((r) => {
+		randpg.getAllRacesNames().forEach((r: string) => {
 			new Setting(containerEl)
-				.setName(titled(r.getName$0()))
-				.setDesc(`Enable the ${titled(r.getName$0())} race`)
+				.setName(titled(r))
+				.setDesc(`Enable the ${titled(r)} race`)
 				.addToggle((toggle: any) =>
 					toggle
-						.setValue(
-							this.plugin.settings.races.includes(r.getName$0())
-						)
-						.onChange(async () => this.onRaceChange(r.getName$0()))
+						.setValue(this.plugin.settings.races.includes(r))
+						.onChange(async () => this.onRaceChange(r))
 				);
 		});
 	}
@@ -56,6 +54,7 @@ export class RealmRollerSettingTab extends PluginSettingTab {
 		} else {
 			this.plugin.settings.races = [...this.plugin.settings.races, r];
 		}
+		randpg.setActiveRaces(this.plugin.settings.races);
 		await this.plugin.saveSettings();
 	}
 }

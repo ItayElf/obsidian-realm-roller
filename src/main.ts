@@ -24,7 +24,7 @@ interface RealmRollerSettings {
 
 const DEFAULT_SETTINGS: Partial<RealmRollerSettings> = {
 	rootFolder: "Entities",
-	races: new randpg.RaceManager().get$activeTypes().map((r) => r.getName$0()),
+	races: randpg.getAllRacesNames(),
 };
 
 export default class RealmRoller extends Plugin {
@@ -58,6 +58,7 @@ export default class RealmRoller extends Plugin {
 			DEFAULT_SETTINGS,
 			await this.loadData()
 		);
+		randpg.setActiveRaces(this.settings.races);
 	}
 
 	async saveSettings() {
