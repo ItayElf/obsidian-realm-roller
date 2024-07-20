@@ -14,6 +14,7 @@ import getEmblemCommand from "./commands/generationCommands/generateEmblem";
 import getGuildCommand from "./commands/generationCommands/generateGuild";
 import getKingdomCommand from "./commands/generationCommands/generateKingdom";
 import getWorldCommand from "./commands/generationCommands/generateWorld";
+import getEntryDeleteCommand from "./commands/deleteEntry";
 
 interface RealmRollerSettings {
 	rootFolder: string;
@@ -45,6 +46,7 @@ export default class RealmRoller extends Plugin {
 		this.addCommand(getGuildCommand(this.app));
 		this.addCommand(getKingdomCommand(this.app));
 		this.addCommand(getWorldCommand(this.app));
+		this.addCommand(getEntryDeleteCommand(this.app));
 	}
 
 	async loadSettings() {
