@@ -15,13 +15,16 @@ import getGuildCommand from "./commands/generationCommands/generateGuild";
 import getKingdomCommand from "./commands/generationCommands/generateKingdom";
 import getWorldCommand from "./commands/generationCommands/generateWorld";
 import getEntryDeleteCommand from "./commands/deleteEntry";
+import randpg from "./randpg/randpg";
 
 interface RealmRollerSettings {
 	rootFolder: string;
+	races: string[];
 }
 
 const DEFAULT_SETTINGS: Partial<RealmRollerSettings> = {
 	rootFolder: "Entities",
+	races: new randpg.RaceManager().get$activeTypes().map((r) => r.getName$0()),
 };
 
 export default class RealmRoller extends Plugin {

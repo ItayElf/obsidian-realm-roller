@@ -1,5 +1,7 @@
 import RealmRoller from "./main";
 import { App, PluginSettingTab, Setting } from "obsidian";
+import randpg from "./randpg/randpg";
+import { titled } from "./utils";
 
 export class RealmRollerSettingTab extends PluginSettingTab {
 	plugin: RealmRoller;
@@ -26,5 +28,34 @@ export class RealmRollerSettingTab extends PluginSettingTab {
 						await this.plugin.saveSettings();
 					})
 			);
+
+		containerEl.createEl("hr");
+		containerEl.createEl("div", {
+			text: "Races",
+			cls: "setting-item-heading setting-item",
+		});
+		new randpg.RaceManager().get$activeTypes().forEach((r) => {
+			new Setting(containerEl)
+				.setName(titled(r.getName$0()))
+				.setDesc(`Enable the ${titled(r.getName$0())} race`)
+				.addToggle((toggle: any) =>
+					toggle
+						.setValue(
+							this.plugin.settings.races.includes(r.getName$0())
+						)
+						.onChange(async () => this.onRaceChange(r.getName$0()))
+				);
+		});
+	}
+
+	private async onRaceChange(r: string) {
+		if (this.plugin.settings.races.includes(r)) {
+			this.plugin.settings.races = this.plugin.settings.races.filter(
+				(r2) => r2 !== r
+			);
+		} else {
+			this.plugin.settings.races = [...this.plugin.settings.races, r];
+		}
+		await this.plugin.saveSettings();
 	}
 }
